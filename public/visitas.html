@@ -3,60 +3,179 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Relatório diário — PropostaJá</title>
-  <meta name="description" content="Relatório diário de visitas e publicação do PropostaJá." />
+  <title>Relatório diário de visitas — PropostaJá / hub</title>
+  <meta name="description" content="Relatório diário de visitas — PropostaJá e hub de produtos de Vitor Reis. Fonte: Vercel Web Analytics." />
+  <meta name="theme-color" content="#020617" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root { color-scheme: dark; --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --sky:#0ea5e9; --warn:#fbbf24; }
+    :root {
+      color-scheme: dark;
+      --bg: #020617;
+      --card: #0f172a;
+      --border: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --sky: #0ea5e9;
+      --warn: #fbbf24;
+      --ok: #34d399;
+    }
     * { box-sizing: border-box; }
-    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: radial-gradient(1200px 600px at 20% -10%, #0c4a6e55, transparent), var(--bg); color: var(--text); line-height:1.5; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .glow {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .glow::before {
+      content: "";
+      position: absolute;
+      top: -8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 42rem;
+      height: 24rem;
+      border-radius: 9999px;
+      background: rgba(14, 165, 233, 0.15);
+      filter: blur(64px);
+    }
     a { color: var(--sky); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-    header { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:2rem; }
-    .brand { font-weight:700; letter-spacing:-0.02em; }
-    .pill { font-size:12px; border:1px solid var(--border); border-radius:999px; padding:.35rem .7rem; color:var(--muted); }
-    h1 { font-size: clamp(1.6rem, 4vw, 2.1rem); letter-spacing:-0.03em; margin:0 0 .5rem; }
-    .sub { color:var(--muted); margin:0 0 1.75rem; }
-    .card { background: linear-gradient(180deg, #0f172acc, #020617cc); border:1px solid var(--border); border-radius:1rem; padding:1.25rem 1.35rem; margin-bottom:1rem; }
-    .card h2 { margin:0 0 .75rem; font-size:1rem; text-transform:uppercase; letter-spacing:.06em; color:#7dd3fc; }
-    .row { display:flex; justify-content:space-between; gap:1rem; padding:.55rem 0; border-bottom:1px solid #1e293b88; }
-    .row:last-child { border-bottom:0; }
-    .label { color:var(--muted); }
-    .value { font-weight:600; text-align:right; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #f8fafc;
+      text-decoration: none;
+    }
+    .brand:hover { text-decoration: none; }
+    .logo {
+      display: flex;
+      width: 2rem;
+      height: 2rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+      color: #020617;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .pill {
+      font-size: 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.8);
+    }
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.15rem);
+      letter-spacing: -0.03em;
+      margin: 0 0 0.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .sub { color: var(--muted); margin: 0 0 1.75rem; }
+    .card {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.85));
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+    .card h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7dd3fc;
+      font-weight: 700;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.55);
+    }
+    .row:last-child { border-bottom: 0; }
+    .label { color: var(--muted); }
+    .value { font-weight: 600; text-align: right; }
+    .ok { color: var(--ok); }
     .warn { color: var(--warn); }
-    ul { margin:.25rem 0 0; padding-left:1.1rem; color:var(--muted); }
-    li { margin:.35rem 0; }
-    footer { margin-top:2rem; color:var(--muted); font-size:.875rem; }
-    .links { display:flex; flex-wrap:wrap; gap:.75rem 1rem; margin-top:.75rem; }
+    .note {
+      margin: 0.85rem 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.1rem; }
+    .muted { color: var(--muted); font-size: 0.85rem; }
+    footer {
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+    code { font-size: 0.85em; }
   </style>
 </head>
 <body>
+  <div class="glow" aria-hidden="true"></div>
   <div class="wrap">
     <header>
-      <div class="brand"><a href="/">Vitor Reis</a> · Relatório</div>
-      <span class="pill">Atualizado: 17 set 2026</span>
+      <a class="brand" href="/">
+        <span class="logo">VR</span>
+        <span>Vitor Reis · Relatório</span>
+      </a>
+      <span class="pill" id="status-pill">A carregar…</span>
     </header>
 
-    <h1>Relatório diário PropostaJá</h1>
-    <p class="sub">Visitas e estado de publicação. Sem métricas inventadas.</p>
+    <h1>Relatório diário de visitas — PropostaJá / hub</h1>
+    <p class="sub">Fonte: Vercel Web Analytics (agregados). Sem métricas inventadas. Fuso: Europe/Paris.</p>
 
-    <section class="card">
-      <h2>Visitas (últimas 24h)</h2>
+    <section class="card" id="status-card">
+      <h2>Estado do tracking</h2>
       <div class="row">
-        <span class="label">Pageviews / visitantes</span>
-        <span class="value warn">Indisponível</span>
+        <span class="label">Web Analytics</span>
+        <span class="value ok">Ativo nos projetos hub, PropostaJá e WebThrone</span>
       </div>
-      <p class="sub" style="margin:0.75rem 0 0">Web Analytics no Vercel ainda responde <code>web_analytics_not_enabled</code> no projeto <code>propostaja</code>. Ativa Analytics no dashboard e o script <code>@vercel/analytics</code> no site para aparecerem números aqui.</p>
+      <div class="row">
+        <span class="label">Script @vercel/analytics</span>
+        <span class="value" id="script-status">Incluído no deploy</span>
+      </div>
+      <p class="note" id="status-note">
+        Os primeiros números aparecem depois de tráfego real nas apps já redeployadas com o script.
+        Também podes ver o dashboard Vercel → Analytics em cada projeto.
+      </p>
     </section>
 
-    <section class="card">
-      <h2>Publicação</h2>
-      <ul>
-        <li>Submetidos (fila/revisão): Launching Next, TheSaaSDir, Startup Stash, freestartuplisting.org, startupproject.org, portugaldir, european-saas, Tarkle…</li>
-        <li>LaunchFree: Accepted</li>
-        <li>SubmitStartup.io: CAPTCHA / erro de rede — não confirmado</li>
-        <li>Vários diretórios saltados (login obrigatório)</li>
-      </ul>
+    <section class="card" id="metrics">
+      <h2>Visitas (dados reais)</h2>
+      <p class="muted" id="metrics-loading">A obter agregados via API server-side…</p>
+      <div id="metrics-body" hidden></div>
     </section>
 
     <section class="card">
@@ -65,20 +184,96 @@
         <a href="https://vitor-produtos.vercel.app">Hub</a>
         <a href="https://propostaja-alpha.vercel.app">PropostaJá</a>
         <a href="https://webthrone.vercel.app">WebThrone</a>
+        <a href="https://vercel.com/inovacao6" target="_blank" rel="noopener noreferrer">Dashboard Vercel</a>
       </div>
     </section>
 
     <section class="card">
-      <h2>Contacto</h2>
-      <div class="row"><span class="label">Email</span><span class="value"><a href="mailto:vitorui999@hotmail.com">vitorui999@hotmail.com</a></span></div>
-      <div class="row"><span class="label">WhatsApp</span><span class="value"><a href="https://wa.me/351913554990">wa.me/351913554990</a></span></div>
-      <div class="row"><span class="label">Revolut</span><span class="value">@v_reis82</span></div>
-      <div class="row"><span class="label">MB Way</span><span class="value">913554990</span></div>
+      <h2>Contactos</h2>
+      <div class="row">
+        <span class="label">Email</span>
+        <span class="value"><a href="mailto:vitorui999@hotmail.com">vitorui999@hotmail.com</a></span>
+      </div>
+      <div class="row">
+        <span class="label">WhatsApp</span>
+        <span class="value"><a href="https://wa.me/351913554990" target="_blank" rel="noopener noreferrer">wa.me/351913554990</a></span>
+      </div>
+      <div class="row">
+        <span class="label">Revolut</span>
+        <span class="value">@v_reis82</span>
+      </div>
+      <div class="row">
+        <span class="label">MB Way</span>
+        <span class="value">913554990</span>
+      </div>
     </section>
 
     <footer>
-      Página pública de estado · sem códigos de ativação · Portugal
+      Página pública de estado · Portugal · © <span id="y"></span> Vitor Reis
     </footer>
   </div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear()
+
+    function fmt(n) {
+      if (n === null || n === undefined) return '—'
+      return new Intl.NumberFormat('pt-PT').format(n)
+    }
+
+    function renderProject(p) {
+      const todayPv = p.today && p.today.ok ? p.today.pageviews : null
+      const todayVis = p.today && p.today.ok ? p.today.visitors : null
+      const yPv = p.yesterday && p.yesterday.ok ? p.yesterday.pageviews : null
+      const yVis = p.yesterday && p.yesterday.ok ? p.yesterday.visitors : null
+      const err = (!p.today || !p.today.ok) ? (p.today && p.today.error) : null
+      return (
+        '<div style="margin-bottom:1rem">' +
+          '<div class="row"><span class="label"><strong>' + p.label + '</strong></span>' +
+            '<span class="value"><a href="' + p.url + '" target="_blank" rel="noopener noreferrer">abrir</a></span></div>' +
+          '<div class="row"><span class="label">Hoje — pageviews / visitantes</span>' +
+            '<span class="value">' + fmt(todayPv) + ' / ' + fmt(todayVis) + '</span></div>' +
+          '<div class="row"><span class="label">Ontem — pageviews / visitantes</span>' +
+            '<span class="value">' + fmt(yPv) + ' / ' + fmt(yVis) + '</span></div>' +
+          (err ? '<p class="note warn">Erro API: ' + err + '</p>' : '') +
+        '</div>'
+      )
+    }
+
+    fetch('/api/visitas')
+      .then(function (r) { return r.json() })
+      .then(function (data) {
+        var loading = document.getElementById('metrics-loading')
+        var body = document.getElementById('metrics-body')
+        var pill = document.getElementById('status-pill')
+        if (!data || !data.ok || !data.projects || !data.projects.length) {
+          loading.innerHTML = 'Ainda a recolher / sem token server-side para agregados públicos. ' +
+            'Tracking <strong class="ok">está ativo</strong> — números no dashboard Vercel → Analytics; ' +
+            'aqui aparecem assim que a API de relatório estiver ligada e houver tráfego.'
+          pill.textContent = 'Analytics ON · a recolher'
+          return
+        }
+        loading.hidden = true
+        body.hidden = false
+        var updated = data.generatedAt
+          ? new Date(data.generatedAt).toLocaleString('pt-PT', { timeZone: 'Europe/Paris' })
+          : '—'
+        body.innerHTML =
+          data.projects.map(renderProject).join('') +
+          '<p class="muted">Fonte: ' + (data.source || 'vercel-web-analytics') +
+          ' · Atualizado: ' + updated + ' (PT)</p>'
+        pill.textContent = 'Analytics ON · dados reais'
+      })
+      .catch(function () {
+        document.getElementById('metrics-loading').innerHTML =
+          'Não foi possível obter agregados agora. Web Analytics está ativo nos projetos; ' +
+          'vê o dashboard Vercel ou volta mais tarde — sem números inventados.'
+        document.getElementById('status-pill').textContent = 'Analytics ON'
+      })
+  </script>
+  <!-- Track this static page too (HTML snippet from Vercel Web Analytics) -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

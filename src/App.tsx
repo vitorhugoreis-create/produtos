@@ -7,6 +7,7 @@ const copy = {
     brand: 'Vitor Reis',
     navProducts: 'Produtos',
     navContact: 'Contacto',
+    navReport: 'Relatório',
     heroEyebrow: 'Portfólio de ferramentas',
     heroTitle: 'Produtos de Vitor Reis',
     heroSub:
@@ -41,6 +42,7 @@ const copy = {
     brand: 'Vitor Reis',
     navProducts: 'Products',
     navContact: 'Contact',
+    navReport: 'Report',
     heroEyebrow: 'Tool portfolio',
     heroTitle: "Vitor Reis' Products",
     heroSub:
@@ -218,6 +220,9 @@ export default function App() {
             </a>
             <a href="#contacto" className="hover:text-white transition">
               {t.navContact}
+            </a>
+            <a href="/visitas" className="hover:text-white transition">
+              {t.navReport}
             </a>
             <LangToggle lang={lang} setLang={setLang} />
           </nav>
