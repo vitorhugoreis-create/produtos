@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relatório diário — PropostaJá</title>
+  <meta name="description" content="Relatório diário de visitas e publicação do PropostaJá." />
+  <style>
+    :root { color-scheme: dark; --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --sky:#0ea5e9; --warn:#fbbf24; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: radial-gradient(1200px 600px at 20% -10%, #0c4a6e55, transparent), var(--bg); color: var(--text); line-height:1.5; }
+    a { color: var(--sky); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:2rem; }
+    .brand { font-weight:700; letter-spacing:-0.02em; }
+    .pill { font-size:12px; border:1px solid var(--border); border-radius:999px; padding:.35rem .7rem; color:var(--muted); }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.1rem); letter-spacing:-0.03em; margin:0 0 .5rem; }
+    .sub { color:var(--muted); margin:0 0 1.75rem; }
+    .card { background: linear-gradient(180deg, #0f172acc, #020617cc); border:1px solid var(--border); border-radius:1rem; padding:1.25rem 1.35rem; margin-bottom:1rem; }
+    .card h2 { margin:0 0 .75rem; font-size:1rem; text-transform:uppercase; letter-spacing:.06em; color:#7dd3fc; }
+    .row { display:flex; justify-content:space-between; gap:1rem; padding:.55rem 0; border-bottom:1px solid #1e293b88; }
+    .row:last-child { border-bottom:0; }
+    .label { color:var(--muted); }
+    .value { font-weight:600; text-align:right; }
+    .warn { color: var(--warn); }
+    ul { margin:.25rem 0 0; padding-left:1.1rem; color:var(--muted); }
+    li { margin:.35rem 0; }
+    footer { margin-top:2rem; color:var(--muted); font-size:.875rem; }
+    .links { display:flex; flex-wrap:wrap; gap:.75rem 1rem; margin-top:.75rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><a href="/">Vitor Reis</a> · Relatório</div>
+      <span class="pill">Atualizado: 16 set 2026</span>
+    </header>
+
+    <h1>Relatório diário PropostaJá</h1>
+    <p class="sub">Visitas e estado de publicação. Sem métricas inventadas.</p>
+
+    <section class="card">
+      <h2>Visitas (últimas 24h)</h2>
+      <div class="row">
+        <span class="label">Pageviews / visitantes</span>
+        <span class="value warn">Indisponível</span>
+      </div>
+      <p class="sub" style="margin:0.75rem 0 0">Web Analytics no Vercel ainda responde <code>web_analytics_not_enabled</code> no projeto <code>propostaja</code>. Ativa Analytics no dashboard e o script <code>@vercel/analytics</code> no site para aparecerem números aqui.</p>
+    </section>
+
+    <section class="card">
+      <h2>Publicação</h2>
+      <ul>
+        <li>Submetidos (fila/revisão): Launching Next, TheSaaSDir, Startup Stash, freestartuplisting.org, startupproject.org, portugaldir, european-saas, Tarkle…</li>
+        <li>LaunchFree: Accepted</li>
+        <li>SubmitStartup.io: CAPTCHA / erro de rede — não confirmado</li>
+        <li>Vários diretórios saltados (login obrigatório)</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Produtos</h2>
+      <div class="links">
+        <a href="https://vitor-produtos.vercel.app">Hub</a>
+        <a href="https://propostaja-alpha.vercel.app">PropostaJá</a>
+        <a href="https://webthrone.vercel.app">WebThrone</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Contacto</h2>
+      <div class="row"><span class="label">Email</span><span class="value"><a href="mailto:vitorui999@hotmail.com">vitorui999@hotmail.com</a></span></div>
+      <div class="row"><span class="label">WhatsApp</span><span class="value"><a href="https://wa.me/351913554990">wa.me/351913554990</a></span></div>
+      <div class="row"><span class="label">Revolut</span><span class="value">@v_reis82</span></div>
+      <div class="row"><span class="label">MB Way</span><span class="value">913554990</span></div>
+    </section>
+
+    <footer>
+      Página pública de estado · sem códigos de ativação · Portugal
+    </footer>
+  </div>
+</body>
+</html>
