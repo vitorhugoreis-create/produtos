@@ -3,203 +3,82 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Relatório diário de visitas — PropostaJá / hub</title>
-  <meta name="description" content="Relatório diário de visitas — PropostaJá e hub de produtos de Vitor Reis." />
-  <meta name="theme-color" content="#020617" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <title>Relatório diário — PropostaJá</title>
+  <meta name="description" content="Relatório diário de visitas e publicação do PropostaJá." />
   <style>
-    :root {
-      color-scheme: dark;
-      --bg: #020617;
-      --card: #0f172a;
-      --border: #1e293b;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --sky: #0ea5e9;
-      --warn: #fbbf24;
-    }
+    :root { color-scheme: dark; --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --sky:#0ea5e9; --warn:#fbbf24; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      min-height: 100vh;
-    }
-    .glow {
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .glow::before {
-      content: "";
-      position: absolute;
-      top: -8rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 42rem;
-      height: 24rem;
-      border-radius: 9999px;
-      background: rgba(14, 165, 233, 0.15);
-      filter: blur(64px);
-    }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: radial-gradient(1200px 600px at 20% -10%, #0c4a6e55, transparent), var(--bg); color: var(--text); line-height:1.5; }
     a { color: var(--sky); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #f8fafc;
-      text-decoration: none;
-    }
-    .brand:hover { text-decoration: none; }
-    .logo {
-      display: flex;
-      width: 2rem;
-      height: 2rem;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.5rem;
-      background: linear-gradient(135deg, #38bdf8, #8b5cf6);
-      color: #020617;
-      font-size: 0.75rem;
-      font-weight: 800;
-    }
-    .pill {
-      font-size: 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.35rem 0.7rem;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.8);
-    }
-    h1 {
-      font-size: clamp(1.6rem, 4vw, 2.15rem);
-      letter-spacing: -0.03em;
-      margin: 0 0 0.5rem;
-      font-weight: 800;
-      color: #fff;
-    }
-    .sub { color: var(--muted); margin: 0 0 1.75rem; }
-    .card {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.85));
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.25rem 1.35rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-    }
-    .card h2 {
-      margin: 0 0 0.75rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #7dd3fc;
-      font-weight: 700;
-    }
-    .row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.55rem 0;
-      border-bottom: 1px solid rgba(30, 41, 59, 0.55);
-    }
-    .row:last-child { border-bottom: 0; }
-    .label { color: var(--muted); }
-    .value { font-weight: 600; text-align: right; }
-    .warn {
-      color: var(--warn);
-      font-weight: 600;
-      margin: 0;
-      font-size: 1.05rem;
-    }
-    .note {
-      margin: 0.85rem 0 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    .links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.1rem; }
-    footer {
-      margin-top: 2rem;
-      color: var(--muted);
-      font-size: 0.875rem;
-    }
+    header { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:2rem; }
+    .brand { font-weight:700; letter-spacing:-0.02em; }
+    .pill { font-size:12px; border:1px solid var(--border); border-radius:999px; padding:.35rem .7rem; color:var(--muted); }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.1rem); letter-spacing:-0.03em; margin:0 0 .5rem; }
+    .sub { color:var(--muted); margin:0 0 1.75rem; }
+    .card { background: linear-gradient(180deg, #0f172acc, #020617cc); border:1px solid var(--border); border-radius:1rem; padding:1.25rem 1.35rem; margin-bottom:1rem; }
+    .card h2 { margin:0 0 .75rem; font-size:1rem; text-transform:uppercase; letter-spacing:.06em; color:#7dd3fc; }
+    .row { display:flex; justify-content:space-between; gap:1rem; padding:.55rem 0; border-bottom:1px solid #1e293b88; }
+    .row:last-child { border-bottom:0; }
+    .label { color:var(--muted); }
+    .value { font-weight:600; text-align:right; }
+    .warn { color: var(--warn); }
+    ul { margin:.25rem 0 0; padding-left:1.1rem; color:var(--muted); }
+    li { margin:.35rem 0; }
+    footer { margin-top:2rem; color:var(--muted); font-size:.875rem; }
+    .links { display:flex; flex-wrap:wrap; gap:.75rem 1rem; margin-top:.75rem; }
   </style>
 </head>
 <body>
-  <div class="glow" aria-hidden="true"></div>
   <div class="wrap">
     <header>
-      <a class="brand" href="/">
-        <span class="logo">VR</span>
-        <span>Vitor Reis · Relatório</span>
-      </a>
-      <span class="pill">Hub público</span>
+      <div class="brand"><a href="/">Vitor Reis</a> · Relatório</div>
+      <span class="pill">Atualizado: 17 set 2026</span>
     </header>
 
-    <h1>Relatório diário de visitas — PropostaJá / hub</h1>
-    <p class="sub">Estado das visitas do hub e dos produtos. Sem métricas inventadas.</p>
+    <h1>Relatório diário PropostaJá</h1>
+    <p class="sub">Visitas e estado de publicação. Sem métricas inventadas.</p>
 
     <section class="card">
-      <h2>Visitas</h2>
-      <p class="warn">Visitas indisponíveis — Web Analytics não ativo no Vercel</p>
-      <p class="note">
-        Não há dados reais de Vercel Web Analytics neste projeto (nem script
-        <code>@vercel/analytics</code> no site). Quando o Analytics estiver ativo no dashboard,
-        esta página poderá mostrar números reais.
-      </p>
+      <h2>Visitas (últimas 24h)</h2>
+      <div class="row">
+        <span class="label">Pageviews / visitantes</span>
+        <span class="value warn">Indisponível</span>
+      </div>
+      <p class="sub" style="margin:0.75rem 0 0">Web Analytics no Vercel ainda responde <code>web_analytics_not_enabled</code> no projeto <code>propostaja</code>. Ativa Analytics no dashboard e o script <code>@vercel/analytics</code> no site para aparecerem números aqui.</p>
+    </section>
+
+    <section class="card">
+      <h2>Publicação</h2>
+      <ul>
+        <li>Submetidos (fila/revisão): Launching Next, TheSaaSDir, Startup Stash, freestartuplisting.org, startupproject.org, portugaldir, european-saas, Tarkle…</li>
+        <li>LaunchFree: Accepted</li>
+        <li>SubmitStartup.io: CAPTCHA / erro de rede — não confirmado</li>
+        <li>Vários diretórios saltados (login obrigatório)</li>
+      </ul>
     </section>
 
     <section class="card">
       <h2>Produtos</h2>
       <div class="links">
-        <a href="https://vitor-produtos.vercel.app">https://vitor-produtos.vercel.app</a>
-        <a href="https://propostaja-alpha.vercel.app">https://propostaja-alpha.vercel.app</a>
-        <a href="https://webthrone.vercel.app">https://webthrone.vercel.app</a>
+        <a href="https://vitor-produtos.vercel.app">Hub</a>
+        <a href="https://propostaja-alpha.vercel.app">PropostaJá</a>
+        <a href="https://webthrone.vercel.app">WebThrone</a>
       </div>
     </section>
 
     <section class="card">
-      <h2>Contactos</h2>
-      <div class="row">
-        <span class="label">Email</span>
-        <span class="value"><a href="mailto:vitorui999@hotmail.com">vitorui999@hotmail.com</a></span>
-      </div>
-      <div class="row">
-        <span class="label">WhatsApp</span>
-        <span class="value"><a href="https://wa.me/351913554990" target="_blank" rel="noopener noreferrer">wa.me/351913554990</a></span>
-      </div>
-      <div class="row">
-        <span class="label">Revolut</span>
-        <span class="value">@v_reis82</span>
-      </div>
-      <div class="row">
-        <span class="label">MB Way</span>
-        <span class="value">913554990</span>
-      </div>
+      <h2>Contacto</h2>
+      <div class="row"><span class="label">Email</span><span class="value"><a href="mailto:vitorui999@hotmail.com">vitorui999@hotmail.com</a></span></div>
+      <div class="row"><span class="label">WhatsApp</span><span class="value"><a href="https://wa.me/351913554990">wa.me/351913554990</a></span></div>
+      <div class="row"><span class="label">Revolut</span><span class="value">@v_reis82</span></div>
+      <div class="row"><span class="label">MB Way</span><span class="value">913554990</span></div>
     </section>
 
     <footer>
-      Página pública de estado · Portugal · © <span id="y"></span> Vitor Reis
+      Página pública de estado · sem códigos de ativação · Portugal
     </footer>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
